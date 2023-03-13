@@ -6,19 +6,19 @@ const InitialState = {
 
 const reducerPostAdmin = (state = InitialState, action) => {
   switch (action.type) {
-    case "FETCH_DATA_REQUEST":
+    case "FETCH_DATA_REQUEST_ADMIN":
       return {
         loading: true,
         postDataAdmin: [],
         error: "",
       };
-    case "FETCH_DATA_SUCCESS":
+    case "FETCH_DATA_SUCCESS_ADMIN":
       return {
         loading: false,
         postDataAdmin: action.payload,
         error: "",
       };
-    case "FETCH_DATA_ERROR":
+    case "FETCH_DATA_ERROR_ADMIN":
       return {
         loading: false,
         postDataAdmin: [],

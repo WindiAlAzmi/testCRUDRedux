@@ -1,19 +1,21 @@
-import React from "react";
-import  { Navigate } from "react-router-dom";
+import React, {useEffect} from "react";
+import  { Navigate, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { dataAllPostDetailUserLogin } from "../reducer/PrivateAccess/detailUser";
 
-const PrivateRoute = ({children, loginOnly, redirectTo}) => {
+const PrivateRoute = ({redirectTo, children}) => {
     
+ const dataUserLogin = useSelector(dataAllPostDetailUserLogin);
+ console.log(dataUserLogin.email, 'ini data login di privtate route');
 
-    if(!loginOnly) {
-        return <Navigate to={redirectTo} />
-    }
+            if (dataUserLogin.email === undefined) {
+              return <Navigate to={redirectTo} />;
+            }
 
-     if (loginOnly) {
-      return children;
-     }
+            if (dataUserLogin.email !== undefined) {
+              return children;
+            }
 
-  
-    
 };
 
 export default PrivateRoute;

@@ -20,7 +20,7 @@ function App() {
             <Route
               path="login"
               element={
-                  <Login loginOnly={false} />
+                  <Login />
               }
             />
           </Route>
@@ -30,7 +30,7 @@ function App() {
           <Route
             path="admin"
             element={
-              <PrivateRoute loginOnly={false} redirectTo="/login">
+              <PrivateRoute  redirectTo="/login">
                 <Admin />
               </PrivateRoute>
             }

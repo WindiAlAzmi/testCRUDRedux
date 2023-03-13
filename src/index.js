@@ -14,13 +14,19 @@ import reducerPostAdmin from './reducer/PrivateAccess/ReducerPost';
 import generalAllReducer from './reducer/GeneralAccess/generalReducer';
 import detailPost from './reducer/GeneralAccess/detailPost';
 import detailPostUser from './reducer/GeneralAccess/detailPostUser';
+import userReducer from './reducer/GeneralAccess/UserReducer';
+import detailUser from './reducer/PrivateAccess/detailUser';
 
 const rootReducer = combineReducers({
   allPost: ReducerPost,
   postAdmin : reducerPostAdmin,
   generalStateData : generalAllReducer,
   detailStatePost : detailPost,
-  detailStatePostUser : detailPostUser
+  detailStatePostUser : detailPostUser,
+  allPostUser : userReducer,
+ detailStatePostUserLogin : detailUser,
+
+
 });
 const store = createStore(rootReducer);
 

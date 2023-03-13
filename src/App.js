@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import Box from "@mui/material/Box";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Main from "./pages/Main";
+import LikedPost from "./pages/LikedPost";
+import DetailPost from './components/DetailPost';
+import Admin from "./pages/Admin";
+import CreatePostAdmin from './components/CreatePostAdmin';
+import EditPostAdmin from './components/EditPostAdmin';
+import Login from './components/Login';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box color="primary" sx={{ backgroundColor: "red", padding: 10 }}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Main />}>
+            <Route path="posts/:postId" element={<DetailPost />} />
+            <Route
+              path="login"
+              element={
+                  <Login loginOnly={false} />
+              }
+            />
+          </Route>
+
+          <Route path="liked-post" element={<LikedPost />} />
+
+          <Route
+            path="admin"
+            element={
+              <PrivateRoute loginOnly={false} redirectTo="/login">
+                <Admin />
+              </PrivateRoute>
+            }
+          >
+            <Route path="posts/:postId" element={<DetailPost />} />
+            <Route path="create" element={<CreatePostAdmin />} />
+            <Route path="posts/:postId/edit" element={<EditPostAdmin />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Box>
   );
 }
 

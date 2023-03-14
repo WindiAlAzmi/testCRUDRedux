@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import { Routes, Route } from "react-router-dom";
+import "./App.css";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import LikedPost from "./pages/LikedPost";
@@ -9,21 +10,25 @@ import CreatePostAdmin from './components/CreatePostAdmin';
 import EditPostAdmin from './components/EditPostAdmin';
 import Login from './components/Login';
 import PrivateRoute from "./components/PrivateRoute";
+import AllPost from "./pages/Allpost";
 
 function App() {
   return (
-    <Box color="primary" sx={{ backgroundColor: "red", padding: 10 }}>
+    <Box color="primary">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Main />}>
+          {/* <Route element={<Main />}> */}
+          <Route path="/" element={<AllPost/>} >
             <Route path="posts/:postId" element={<DetailPost />} />
-            <Route
+
+           <Route
               path="login"
               element={
                   <Login />
               }
-            />
-          </Route>
+            /> 
+      </Route> 
+
 
           <Route path="liked-post" element={<LikedPost />} />
 

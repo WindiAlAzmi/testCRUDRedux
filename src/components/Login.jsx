@@ -23,12 +23,13 @@ const Login = () => {
 //  }, [loginOnly, navigate]);
 
    useEffect(() =>{
-        if(dataUserLogin.email === null){
+        if(dataUserLogin.email !== undefined){
 
          console.log(dataUserLogin.email, 'ini nilai login');
          navigate("/admin");
 
         }
+
  }, [dataUserLogin, navigate]);
 
     const [data, setData] = useState({

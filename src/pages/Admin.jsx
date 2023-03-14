@@ -96,7 +96,6 @@ const Admin = () => {
       <Box sx={{ backgroundColor: "green", padding: 10 }}>
         ini halaman admin
         <div>
-          <h1>reducer with axios</h1>
           <ul>
             {loadingPost ? (
               <li>loading</li>

@@ -116,34 +116,20 @@ const DetailPost = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId])
 
-    const favoriteHandler = (ds) => {
-        dispatch({
-        type: "LIKE_POST",
-        payload: ds,
-      });
-      };
-
-    const removeFavoriteHandler = (dr) => {
-            dispatch({
-              type: "REMOVE_POST",
-              payload: dr,
-            });
-     };
-
+ 
   return (
-    <Box sx={{ backgroundColor: "yellow" }}>
+    <Box>
   
             <div>
         ini modal detail post {postId} - {dataPostUser.title} - {dataPostUser.body}
       </div>
   
   
-      <Box sx={{ backgroundColor: "pink" }}>
+      <Box>
         {dataPostGeneral.map((dr) => {
           return (
             <li key={dr.id}>
               {dr.email} - {dr.body}
-              <button onClick={() => favoriteHandler(dr)}>like</button>
                
             </li>
           );

@@ -1,18 +1,21 @@
 import React from "react";
 import  { Navigate } from "react-router-dom";
-import {  useSelector } from "react-redux";
-import { dataAllPostDetailUserLogin } from "../reducer/PrivateAccess/detailUser";
+// import {  useSelector } from "react-redux";
+// import { dataAllPostDetailUserLogin } from "../reducer/PrivateAccess/detailUser";
 
 const PrivateRoute = ({redirectTo, children}) => {
-    
- const dataUserLogin = useSelector(dataAllPostDetailUserLogin);
- console.log(dataUserLogin.email, 'ini data login di privtate route');
+    const savedItem = localStorage.getItem("emailUser");
+    const parsedItem = JSON.parse(savedItem);
+    console.log(parsedItem, "ini nilai parse localstorage");
 
-            if (dataUserLogin.email === undefined) {
+//  const dataUserLogin = useSelector(dataAllPostDetailUserLogin);
+//  console.log(dataUserLogin.email, 'ini data login di privtate route');
+
+            if (parsedItem === undefined) {
               return <Navigate to={redirectTo} />;
             }
 
-            if (dataUserLogin.email !== undefined) {
+            if (parsedItem !== undefined) {
               return children;
             }
 

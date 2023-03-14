@@ -3,6 +3,8 @@ const initialState = {
   favoriteData: [],
   messageFavorite : "",
   isModalLogin : false,
+  setLocationModal : "",
+  setLogoutModal:false
 };
 
 export const generalAllReducer = (state = initialState, action) => {
@@ -46,6 +48,19 @@ export const generalAllReducer = (state = initialState, action) => {
       break;
     case "SET_MODAL":
       return { ...state, isModalLogin: action.payload };
+
+    case "SET_LOCATION_MODAL":
+      return {
+        ...state,
+        setLocationModal: action.payload.cr,
+        isModalLogin: action.payload.bl,
+      };
+    case "SET_LOGOUT_MODAL":
+      return {
+        ...state,
+        setLogoutModal: action.payload
+       
+      };
     default:
       return state;
   }
@@ -55,4 +70,7 @@ export const dataPagination = (state) => state.generalStateData.pagePagination;
 export const dataFavoriteState = (state) => state.generalStateData.favoriteData;
 export const messageFavoriteState = (state) => state.generalStateData.messageFavorite;
 export const dataModalLogin = (state) => state.generalStateData.isModalLogin;
+export const dataModalLocation = (state) => state.generalStateData.setLocationModal;
+export const dataLogoutModal = (state) =>
+  state.generalStateData.setLogoutModal;
 export default generalAllReducer;

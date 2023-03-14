@@ -11,10 +11,11 @@ import EditPostAdmin from './components/EditPostAdmin';
 import Login from './components/Login';
 import PrivateRoute from "./components/PrivateRoute";
 import AllPost from "./pages/Allpost";
+import ModalCreatePostAdmin from "./components/ModalCreatePostAdmin";
 
 function App() {
   return (
-    <Box color="primary">
+
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* <Route element={<Main />}> */}
@@ -41,12 +42,11 @@ function App() {
             }
           >
             <Route path="posts/:postId" element={<DetailPost />} />
-            <Route path="create" element={<CreatePostAdmin />} />
+            <Route path="create" element={<ModalCreatePostAdmin />} />
             <Route path="posts/:postId/edit" element={<EditPostAdmin />} />
           </Route>
         </Route>
       </Routes>
-    </Box>
   );
 }
 

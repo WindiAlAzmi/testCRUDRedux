@@ -2,8 +2,12 @@ import { Box, Button, Stack  } from "@mui/material";
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import CreatePostAdmin from "../components/CreatePostAdmin";
 
 const Layout = () => {
+    const savedItem = localStorage.getItem("emailUser");
+    const parsedItem = JSON.parse(savedItem);
+    console.log(parsedItem, "ini nilai parse localstorage");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -16,7 +20,7 @@ const Layout = () => {
     const loginHandler = () => {
         navigate("/login");
            dispatch({
-             type: "SET_MODAL",
+             type: "SET_LOGOUT_MODAL",
              payload: true,
            });
       };
@@ -34,13 +38,19 @@ const Layout = () => {
              
       }
 
+      
+
+
 
     return (
       <Box
         sx={{
-          backgroundColor: "primary",
+          // backgroundColor: "red",
           display: "flex",
           flexDirection: "column",
+          height: "100vh",
+          justifyContent: "space-between",
+          padding: 1,
           //   border: 3,
         }}
       >
@@ -49,13 +59,18 @@ const Layout = () => {
           spacing={2}
           justifyContent="space-between"
           alignItems="center"
-          sx={{ backgroundColor: "#106cc8", padding: 2, marginBottom:3 }}
+          sx={{
+            backgroundColor: "white",
+            padding: 2,
+            borderColor: "black",
+          }}
         >
           <Box
             sx={{
-              color: "#ffff",
+              color: "#1a237e",
               fontWeight: 600,
               fontSize: 32,
+              fontStyle: "italic",
             }}
           >
             Blog
@@ -68,7 +83,7 @@ const Layout = () => {
             sx={{ fontWeight: 300, fontSize: 24 }}
           >
             <Button
-              variant="contained"
+              variant="text"
               onClick={homeHandler}
               size="small"
               sx={{
@@ -76,7 +91,7 @@ const Layout = () => {
                 color: "black",
                 width: 110,
                 borderRadius: 5,
-                fontWeight: 300,
+                fontWeight: 600,
                 fontSize: 14,
                 "&:hover": {
                   backgroundColor: "white",
@@ -86,7 +101,7 @@ const Layout = () => {
               Home
             </Button>
             <Button
-              variant="contained"
+              variant="text"
               onClick={likeHandler}
               size="small"
               sx={{
@@ -94,7 +109,7 @@ const Layout = () => {
                 color: "black",
                 width: 140,
                 borderRadius: 5,
-                fontWeight: 300,
+                fontWeight: 600,
                 fontSize: 14,
                 "&:hover": {
                   backgroundColor: "white",
@@ -104,15 +119,16 @@ const Layout = () => {
               Favorite Post
             </Button>
             <Button
-              variant="contained"
+              variant="text"
               onClick={adminHandler}
               size="small"
               sx={{
                 backgroundColor: "white",
                 color: "black",
                 width: 140,
-                borderRadius: 5,
-                fontWeight: 300,
+                borderStyle: "none",
+                // borderRadius: 5,
+                fontWeight: 600,
                 fontSize: 14,
                 "&:hover": {
                   backgroundColor: "white",
@@ -121,31 +137,31 @@ const Layout = () => {
             >
               Halaman Admin
             </Button>
-            <Button
-              variant="contained"
-              onClick={loginHandler}
-              size="small"
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                width: 140,
-                borderRadius: 5,
-                fontWeight: 300,
-                fontSize: 14,
-                "&:hover": {
-                  backgroundColor: "white",
-                },
-              }}
-            >
-              Login
-            </Button>
-            {/* <button onClick={likeHandler}>Favorite post</button> */}
-            {/* <button onClick={adminHandler}>Halaman Admin</button> */}
-            {/* <button onClick={loginHandler}>Login</button> */}
           </Stack>
+          <Button
+            variant="contained"
+            onClick={loginHandler}
+            size="small"
+            sx={{
+              backgroundColor: "#1a237e",
+              color: "white",
+              width: 140,
+              borderRadius: 5,
+              padding: 1,
+              fontWeight: 500,
+              fontSize: 14,
+              "&:hover": {
+                backgroundColor: "#1a237e",
+              },
+            }}
+          >
+            {parsedItem ? 'Logout' : 'Login' }
+          </Button>
         </Stack>
+      
 
         <Outlet />
+        <CreatePostAdmin />
       </Box>
     );
 }

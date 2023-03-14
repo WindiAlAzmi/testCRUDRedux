@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { Outlet, useNavigate, } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
@@ -28,11 +28,13 @@ import {
 } from "../reducer/GeneralAccess/UserReducer";
 import { dataModalLogin } from "../reducer/GeneralAccess/generalReducer";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import Link from "@mui/material";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as MuiLink } from "@mui/material";
+
 const AllPost = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const dataPostGeneral = useSelector(dataAllPost);
   const loadingPostGeneral = useSelector(loadingData);
@@ -140,11 +142,16 @@ const AllPost = () => {
       payload: ds,
     });
   };
-  const changeHandler = (ds) => {
-    navigate(`/posts/${ds}`);
-    //  history.push(`/posts/${ds}`);
-  };
+//   const changeHandler = (ds) => {
+//     navigate(`/posts/${ds}`);
+//   };
 
+  const handleOpen = () => {
+    dispatch({
+      type: "SET_MODAL",
+      payload: true,
+    });
+  };
 
 
   return (
@@ -154,7 +161,7 @@ const AllPost = () => {
         justifyContent="center"
         alignItems="center"
         spacing={2}
-        sx={{ backgroundColor: "white", padding: 2 }}
+        sx={{  padding: 2 }}
       >
         {loadingPostGeneral ? (
           <Box
@@ -169,25 +176,19 @@ const AllPost = () => {
           <List
             aria-labelledby="basic-list-demo"
             sx={{
-              width: "100%",
+              width:"100%",
               textDecoration: "none",
-
               display: "flex",
-              flexDirection: "column",
+             flexDirection: "column",
+             gap:1,
               justifyContent: "center",
-              alignItems: "flex-start",
+              alignItems: "center",
+              backgroundColor:'white'
             }}
           >
             {dataPostGeneral.map((ds) => {
               return (
                 <MuiLink component={RouterLink} to={`../../posts/${ds.id}`}>
-                  {/* <li key={ds.id}>
-                    {ds.id} - {ds.title}
-                    <button onClick={() => favoriteHandler(ds)}>like</button>
-                  </li> */}
-
-                  {/* <Button color="red" startIcon={<FavoriteIcon />}>
-                  </Button> */}
                   <ListItemButton
                     key={ds.id}
                     sx={{
@@ -195,9 +196,14 @@ const AllPost = () => {
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
-                      width: "60%",
+                      width: "100%",
+                      //   backgroundColor: "#1a237e",
+                      border: 1,
+                      borderColor: "#1a237e",
+                      "&:hover": {
+                        backgroundColor: "#1a237e",
+                      },
                     }}
-                    onClick={() => changeHandler(ds)}
                   >
                     <ListItemText
                       primary={ds.title}
@@ -208,12 +214,43 @@ const AllPost = () => {
                         fontSize: 18,
                         textDecoration: "none",
                         width: 500,
+                        "&:hover": {
+                          color: "white",
+                        },
                       }}
+                      onClick={() => handleOpen(ds)}
                     />
                     <ListItemButton>
                       <ListItemIcon>
                         <FavoriteIcon
-                          sx={{ color: "red" }}
+                          sx={{
+                            color: "red",
+                            "&:hover": {
+                              color: "white",
+                            },
+                          }}
+                          onClick={() => favoriteHandler(ds)}
+                        />
+                      </ListItemIcon>
+                      <ListItemIcon>
+                        <EditOutlinedIcon
+                          sx={{
+                            color: "red",
+                            "&:hover": {
+                              color: "white",
+                            },
+                          }}
+                          onClick={() => favoriteHandler(ds)}
+                        />
+                      </ListItemIcon>
+                      <ListItemIcon>
+                        <DeleteOutlineOutlinedIcon
+                          sx={{
+                            color: "red",
+                            "&:hover": {
+                              color: "white",
+                            },
+                          }}
                           onClick={() => favoriteHandler(ds)}
                         />
                       </ListItemIcon>

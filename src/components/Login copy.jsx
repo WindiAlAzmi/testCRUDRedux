@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dataAllPostAllUser } from "../reducer/GeneralAccess/UserReducer";
-import {dataAllPostDetailUserLogin} from "../reducer/PrivateAccess/detailUser";
-import {dataModalLocation, dataModalLogin } from "../reducer/GeneralAccess/generalReducer";
+// import {dataAllPostDetailUserLogin} from "../reducer/PrivateAccess/detailUser";
+import {  dataModalLocation, dataModalLogin } from "../reducer/GeneralAccess/generalReducer";
 import { Box, Button, Input, Modal, Typography } from "@mui/material";
+// import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 const Login = () => {
     const dataModalCheck = useSelector(dataModalLogin);
@@ -19,24 +20,20 @@ console.log(parsedItem, 'ini nilai parse localstorage');
 
 
     const dataUserList = useSelector(dataAllPostAllUser);
-     const dataUserLogin = useSelector(dataAllPostDetailUserLogin);
+    //  const dataUserLogin = useSelector(dataAllPostDetailUserLogin);
 //  const dataUserLogout = useSelector(dataLogoutModal);
-//     useEffect(() =>{
-//         if(loginOnly){
 
-//          console.log(loginOnly, 'ini nilai login');
-//          navigate("/admin");
-
-//         }
-//  }, [loginOnly, navigate]);
 
    useEffect(() =>{
     if(parsedItem !== undefined){
        if (dataModalCheckLocation.includes("create")) {
          navigate(`/admin/create`);
+       }else {
+
        }
       }
- }, [dataUserLogin, parsedItem, dataModalCheckLocation, navigate]);
+   
+ }, [parsedItem, dataModalCheckLocation, navigate]);
                                                                    
     const [data, setData] = useState({
       email: "",
@@ -99,7 +96,70 @@ console.log(parsedItem, 'ini nilai parse localstorage');
 
     return (
       <>
+      {/* {dataUserLogout ?  
 
+         <Modal
+        open={dataLogoutModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          position="fixed"
+          top="50%"
+          left="50%"
+          sx={{
+            width: "30%",
+            maxWidth: "100vw",
+            maxHeight: "60%",
+            backgroundColor: "#1a237e",
+            overflowY: "auto",
+            transform: "translate(-50%, -50%)",
+            padding: 4,
+          }}
+        >
+          <Typography
+            sx={{
+              color: "white",
+              fontSize: 21,
+              fontWeight: 600,
+              textAlign: "center",
+              marginBottom: 2,
+            }}
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          >
+            ingin logout?
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+
+                <Button
+                  onClick={handleSubmit}
+                  variant="contained"
+                  size="small"
+                  sx={{
+
+                    backgroundColor: "white",
+                    color: "black",
+                    width: "80%",
+                    borderRadius: 5,
+                    padding: 1,
+                    fontWeight: 600,
+                    fontSize: 14,
+                    "&:hover": {
+                      backgroundColor: "white",
+                    },
+                  }}
+                >
+                  logout
+                </Button>
+          </Typography>
+        </Box>
+      </Modal>
+  
+        :  */}
+       
       <Modal
         open={dataModalCheck}
         onClose={handleClose}

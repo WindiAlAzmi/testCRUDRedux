@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./pages/Layout";
@@ -6,7 +5,6 @@ import Layout from "./pages/Layout";
 import LikedPost from "./pages/LikedPost";
 import DetailPost from './components/DetailPost';
 import Admin from "./pages/Admin";
-import CreatePostAdmin from './components/CreatePostAdmin';
 import EditPostAdmin from './components/EditPostAdmin';
 import Login from './components/Login';
 import PrivateRoute from "./components/PrivateRoute";

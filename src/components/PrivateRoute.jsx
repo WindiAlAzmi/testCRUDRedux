@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
-import  { Navigate, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import  { Navigate } from "react-router-dom";
+import {  useSelector } from "react-redux";
 import { dataAllPostDetailUserLogin } from "../reducer/PrivateAccess/detailUser";
 
 const PrivateRoute = ({redirectTo, children}) => {

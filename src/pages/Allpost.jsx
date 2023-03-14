@@ -1,15 +1,15 @@
 import {
   Box,
-  Button,
+
   List,
-  ListItem,
+
   ListItemButton,
   ListItemIcon,
   ListItemText,
   Stack,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { Outlet, useNavigate, useHistory } from "react-router-dom";
+import { Outlet, useNavigate, } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
@@ -22,11 +22,10 @@ import {
   messageFavoriteState,
 } from "../reducer/GeneralAccess/generalReducer";
 import {
-  loadingDataAllUser,
+ 
   dataAllPostAllUser,
-  errorDataAllUser,
+ 
 } from "../reducer/GeneralAccess/UserReducer";
-import { Link } from "react-router-dom";
 import { dataModalLogin } from "../reducer/GeneralAccess/generalReducer";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 // import Link from "@mui/material";
@@ -146,12 +145,7 @@ const AllPost = () => {
     //  history.push(`/posts/${ds}`);
   };
 
-  const removeFavoriteHandler = (dr) => {
-    dispatch({
-      type: "REMOVE_POST",
-      payload: dr,
-    });
-  };
+
 
   return (
     <Box sx={{ padding: 2 }}>

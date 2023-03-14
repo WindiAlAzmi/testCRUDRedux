@@ -1,10 +1,9 @@
-import { Box, drawerClasses } from "@mui/material";
+import { Box } from "@mui/material";
 import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dataFavoriteState, messageFavoriteState } from "../reducer/GeneralAccess/generalReducer";
-import { loadingDataDetail, dataAllPostDetail, errorDataDetail } from "../reducer/GeneralAccess/detailPost";
-import { loadingDataDetailUser, dataAllPostDetailUser, errorDataDetailUser } from "../reducer/GeneralAccess/detailPostUser";
+import {  dataAllPostDetail } from "../reducer/GeneralAccess/detailPost";
 import axios from "axios";
 
 
@@ -12,13 +11,10 @@ const DetailPost = () => {
   const { postId } = useParams();
 
        const dataPostGeneral = useSelector(dataAllPostDetail);
-       const loadingPostGeneral = useSelector(loadingDataDetail);
-       const errorPostGeneral = useSelector(errorDataDetail);
 
 
         const dataPostUser = useSelector(state => state.detailStatePostUser.postData);
-       const loadingPostUser = useSelector(loadingDataDetailUser);
-       const errorPostUser = useSelector(errorDataDetailUser);
+  
 
 
        const dataFavorite = useSelector(dataFavoriteState);

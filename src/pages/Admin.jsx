@@ -84,13 +84,6 @@ const Admin = () => {
     });
   };
 
-  const removeFavoriteHandler = (dr) => {
-    dispatch({
-      type: "REMOVE_POST",
-      payload: dr,
-    });
-  };
-
 
     return (
       <Box sx={{ backgroundColor: "green", padding: 10 }}>

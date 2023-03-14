@@ -1,22 +1,15 @@
 import { Box, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dataFavoriteState, messageFavoriteState } from "../reducer/GeneralAccess/generalReducer";
+import { dataFavoriteState } from "../reducer/GeneralAccess/generalReducer";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const LikedPost = () => {
       const dispatch = useDispatch();
 
      const dataFavorite = useSelector(dataFavoriteState);
-     const messageFavorite = useSelector(messageFavoriteState);
      console.log(dataFavorite, 'ini data favorite');
 
-        const favoriteHandler = (ds) => {
-          dispatch({
-            type: "LIKE_POST",
-            payload: ds,
-          });
-        };
 
         const removeFavoriteHandler = (dr) => {
           dispatch({

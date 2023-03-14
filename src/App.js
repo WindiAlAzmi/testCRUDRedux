@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./pages/Layout";
-import Main from "./pages/Main";
+// import Main from "./pages/Main";
 import LikedPost from "./pages/LikedPost";
 import DetailPost from './components/DetailPost';
 import Admin from "./pages/Admin";
